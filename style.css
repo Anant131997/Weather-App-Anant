@@ -1,0 +1,238 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+:root{
+    --specing-medium: 8px;
+    --specing-regular: 16px;
+
+    --font-small: 0.5rem;
+    --font-regular: 1rem;
+    --font-large: 2rem;
+    --font-xl: 4rem;
+    --font-semibold: 600;
+}
+.container {
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+h1,h4 {
+    margin: 0;
+    color: white;
+}
+
+h2,h3,p {
+    margin: var(--specing-regular);
+    color: white;
+}
+
+h3,h4 {
+    padding-top: 8px;
+    opacity: 50%;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 100%;
+    margin: auto;
+    margin-top: var(--specing-regular);
+    /* padding: 20px; */
+    background-color: #00171f;
+}
+
+    
+
+/* mobile first approach */
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+    "search search search" 
+    "current current current"
+    "hourly hourly hourly"
+    "fiveday fiveday fiveday"
+    "feelslike humidity .";
+    gap: var(--specing-regular);
+    /* background-color: black;
+    bacopacity: 50%; */
+}
+
+.container, 
+.container > article {
+    /* border: 1px solid; */
+    border-radius: var(--specing-regular);
+    padding: var(--specing-regular);
+    margin-top: var(--specing-regular);
+}
+
+#search{
+    grid-area: search;
+    font-size: var(--font-regular);
+    border-radius: var(--font-small);
+    padding: var(--specing-regular);
+    height: 10px;
+    background-color: #313638;
+    font-weight: var(--font-semibold);
+}
+
+input#search::placeholder{
+    color: #ffffff;
+}
+input#search {
+    color: #f8f9f5;
+}
+
+#current-forcast{
+    grid-area: current;
+    text-align: center;
+    background-color: #313638;
+    display: grid;
+    grid-auto-flow: column;
+}
+#current-forcast .temp {
+    font-size: var(--font-xl);
+    font-family: 'Roboto', sans-serif;
+    color: aqua;
+}
+#current-forcast .description {
+    text-transform: capitalize;
+}
+#current-forcast .description, #current-forcast .min-max-temp {
+    font-size: var(--font-regular);
+    font-weight: var(--font-semibold);
+}
+
+.current-icon {
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+}
+#iconNow{
+    height: 150px;
+    width: 150px;
+}
+
+/* Styles related to hourly forcast */
+
+#hourly-forcast{
+    grid-area: hourly;
+    text-align: center;
+    background-color: #313638;
+}
+
+
+#hourly-forcast .hourly-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(100px, 1fr);
+    overflow-x: scroll;
+    /* gap: var(--specing-regular); */
+}
+#hourly-forcast .hourly-container .time{
+
+}
+#hourly-forcast .hourly-container .icon{
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+}
+#hourly-forcast .hourly-container .hourly-temp{
+    font-size: var(--font-regular);
+    font-weight: var(--font-semibold);
+}
+
+
+#five-day-forcast{
+    grid-area: fiveday;
+    text-align: center;
+    background-color: #313638;
+}
+#five-day-forcast .fiveDay-container{
+    display: grid;
+    grid-auto-flow: row;
+}
+#five-day-forcast .fiveDay-container .day-wise-forcast {
+    display: grid;
+    grid-template: auto / repeat(4, 1fr);
+    gap: var(--specing-regular);
+}
+#five-day-forcast .fiveDay-container .day-wise-forcast .day{
+    text-transform: capitalize;
+    justify-self: start;
+}
+#five-day-forcast .fiveDay-container .day-wise-forcast .min-temp,
+#five-day-forcast .fiveDay-container .day-wise-forcast .max-temp{
+    font-size: var(--font-regular);
+    font-weight: var(--font-semibold);
+}
+#five-day-forcast .fiveDay-container .day-wise-forcast .min-temp{
+    opacity: 50%;
+}
+#five-day-forcast .fiveDay-container .day-wise-forcast .max-temp{
+    justify-self: end;
+}
+#five-day-forcast .fiveDay-container .day-wise-forcast .icon{
+    width: 75px;
+    height: 75px;
+}
+
+
+#feels-like{
+    grid-area: feelslike;
+    text-align: center;
+    background-color: #313638;
+}
+
+#humidity{
+    grid-area: humidity;
+    text-align: center;
+    background-color: #313638;
+}
+
+
+@media (width>=860px){
+    .container{
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
+        "search search ." 
+        "current current fiveday"
+        "hourly hourly fiveday"
+        "feelslike humidity fiveday";
+    }
+}
+
+@media (width<=500px){
+    #current-forcast{
+        grid-area: current;
+        text-align: center;
+        background-color: #313638;
+        display: grid;
+        grid-auto-flow: row;
+    }
+    .current-icon{
+        order: 1;
+    }
+    .current-weather{
+        order: 2;
+    }
+    #five-day-forcast{
+        grid-area: fiveday;
+        text-align: center;
+        background-color: #313638;
+        overflow-x: scroll;
+    }
+}

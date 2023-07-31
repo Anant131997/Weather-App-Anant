@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./images/clouds-and-sun.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+</head>
+<!-- <body style="background-image: url('./images/bg1.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center center; background-attachment: fixed;"> -->
+<body>
+    <main class="container">
+        <input list="cities" type="search" name="search" id="search" placeholder="Enter City" autocomplete="off">
+        <datalist id="cities">
+        </datalist>
+
+        <article id="current-forcast">
+            <section class="current-weather">
+            <h1 class="city">City Name</h1>
+            <p class="temp">--</p>
+            <p class="description">Description</p>
+            <p class="min-max-temp">Hi/Low</p>
+            </section>
+            <section class="current-icon">
+                <img id="iconNow" src="" alt="">
+            </section>
+        </article>
+        <article id="hourly-forcast">
+            <h2>HOURLY FORECAST</h1>
+                <section class="hourly-container">
+                    <article>
+                        <h4 class="time">Now</h4>
+                        <p class="icon"></p>
+                        <p class="hourly-temp">--</p>
+                    </article>
+                </section>
+        </article>
+        <article id="five-day-forcast">
+            <h1>5 DAY FORECAST</h1>
+                <section class="fiveDay-container">
+                    <article class="day-wise-forcast">
+                        <h3 class="day">TODAY</h3>
+                        <p class="icon"></p>
+                        <p class="min-temp">--</p>
+                        <p class="max-temp">--</p>
+                    </article>
+                </section>
+        </article>
+        <article id="feels-like">
+            <h1>Feels Like</h1>
+            <p class="feels-like-temp">--</p>
+        </article>
+        <article id="humidity">
+            <h1>Humidity</h1>
+            <p class="humidity-value">--</p>
+        </article>
+    </main>
+    <script src="main.js"></script>
+</body>
+</html>
